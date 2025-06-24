@@ -1,86 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth" x-data="{ dark: false }" :class="{ 'dark': dark }">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Name</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => AOS.init());</script>
   </head>
-  <body class="bg-[#fdf7f2] text-gray-800 font-sans leading-relaxed">
+  <body class="bg-[#fdf7f2] dark:bg-gray-900 text-gray-800 dark:text-white font-sans leading-relaxed transition-all">
     <div class="max-w-4xl mx-auto p-6">
+      
+      <!-- Toggle Dark Mode -->
+      <div class="flex justify-end mb-4">
+        <button @click="dark = !dark" class="text-sm bg-gray-800 text-white dark:bg-white dark:text-black px-3 py-1 rounded">
+          Toggle Dark Mode
+        </button>
+      </div>
+
       <!-- Header -->
-      <header class="flex items-center space-x-4 mb-8">
-        <img
-          src="your-photo.jpg"
-          alt="Your face!"
-          class="w-20 h-20 rounded-full"
-        />
+      <header class="flex items-center space-x-4 mb-8" data-aos="fade-down">
+        <img src="your-photo.jpg" alt="Your face!" class="w-20 h-20 rounded-full" />
         <div>
           <h1 class="text-3xl font-bold">Your Name</h1>
-          <p class="text-lg text-gray-600">CS + Design @ Stanford</p>
+          <p class="text-lg text-gray-600 dark:text-gray-300">CS + Design @ Stanford</p>
           <div class="mt-2 space-x-3 text-sm">
             <a href="mailto:your@email.com" class="underline">Email</a>
-            <a href="https://linkedin.com/in/yourprofile" class="underline"
-              >LinkedIn</a
-            >
+            <a href="https://linkedin.com/in/yourprofile" class="underline">LinkedIn</a>
             <a href="yourresume.pdf" class="underline">Resume</a>
           </div>
         </div>
       </header>
 
       <!-- Currently -->
-      <section class="mb-10">
+      <section class="mb-10" data-aos="fade-up">
         <h2 class="text-xl font-semibold mb-2">Currently</h2>
-        <div class="bg-blue-100 p-4 rounded-xl shadow-sm">
-          <p>
-            <strong>APM @ Atlassian</strong> — Helping teams work better via
-            Confluence & Jira
-          </p>
+        <div class="bg-blue-100 dark:bg-blue-900 p-4 rounded-xl shadow-sm">
+          <p><strong>APM @ Atlassian</strong> — Helping teams work better via Confluence & Jira</p>
         </div>
       </section>
 
       <!-- Previously -->
-      <section class="mb-10">
+      <section class="mb-10" data-aos="fade-up">
         <h2 class="text-xl font-semibold mb-2">Previously</h2>
         <ul class="space-y-2">
-          <li class="bg-pink-100 p-3 rounded-xl shadow-sm">
-            <strong>HCI @ Stanford</strong>
-          </li>
-          <li class="bg-green-100 p-3 rounded-xl shadow-sm">
-            <strong>PM @ Spotify</strong>
-          </li>
-          <li class="bg-purple-100 p-3 rounded-xl shadow-sm">
-            <strong>Product @ HBO Max</strong>
-          </li>
+          <li class="bg-pink-100 dark:bg-pink-900 p-3 rounded-xl shadow-sm"><strong>HCI @ Stanford</strong></li>
+          <li class="bg-green-100 dark:bg-green-900 p-3 rounded-xl shadow-sm"><strong>PM @ Spotify</strong></li>
+          <li class="bg-purple-100 dark:bg-purple-900 p-3 rounded-xl shadow-sm"><strong>Product @ HBO Max</strong></li>
         </ul>
       </section>
 
-      <!-- Projects -->
-      <section class="mb-10">
+      <!-- My Work -->
+      <section class="mb-10" data-aos="zoom-in-up">
         <h2 class="text-xl font-semibold mb-4">My Work</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div
-            class="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
-          >
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-right">
             <h3 class="font-bold">Fantasy F1</h3>
-            <p class="text-sm text-gray-600">Product Stickiness · UI/UX</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Product Stickiness · UI/UX</p>
           </div>
-          <div
-            class="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
-          >
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-left">
             <h3 class="font-bold">Meeting Insights</h3>
-            <p class="text-sm text-gray-600">Product Feature · Pretotyping</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Product Feature · Pretotyping</p>
           </div>
         </div>
       </section>
 
+      <!-- Toggle Secret Button -->
+      <section class="mb-10" x-data="{ open: false }" data-aos="fade-up">
+        <button @click="open = !open" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-700 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+          Click me ✨
+        </button>
+        <div x-show="open" x-transition class="mt-3 bg-yellow-100 dark:bg-yellow-700 p-4 rounded shadow">
+          🎉 You found the secret! You're magical.
+        </div>
+      </section>
+
       <!-- About -->
-      <section>
+      <section data-aos="fade-up">
         <h2 class="text-xl font-semibold mb-2">About Me</h2>
         <p>
-          I'm a software engineer at Uber. I graduated from Stanford this year
-          with a B.S. in Computer Science. Born and raised in New Jersey, now
-          based in the Bay.
+          I'm a senior at Stanford studying Symbolic Systems with a love for design, psychology, and product strategy. Born in Hong Kong, raised in Beijing and NJ, now based in the Bay.
         </p>
       </section>
     </div>
