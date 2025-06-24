@@ -1,1 +1,88 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#fdf7f2] text-gray-800 font-sans leading-relaxed">
+    <div class="max-w-4xl mx-auto p-6">
+      <!-- Header -->
+      <header class="flex items-center space-x-4 mb-8">
+        <img
+          src="your-photo.jpg"
+          alt="Your face!"
+          class="w-20 h-20 rounded-full"
+        />
+        <div>
+          <h1 class="text-3xl font-bold">Your Name</h1>
+          <p class="text-lg text-gray-600">CS + Design @ Stanford</p>
+          <div class="mt-2 space-x-3 text-sm">
+            <a href="mailto:your@email.com" class="underline">Email</a>
+            <a href="https://linkedin.com/in/yourprofile" class="underline"
+              >LinkedIn</a
+            >
+            <a href="yourresume.pdf" class="underline">Resume</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Currently -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-2">Currently</h2>
+        <div class="bg-blue-100 p-4 rounded-xl shadow-sm">
+          <p>
+            <strong>APM @ Atlassian</strong> — Helping teams work better via
+            Confluence & Jira
+          </p>
+        </div>
+      </section>
+
+      <!-- Previously -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-2">Previously</h2>
+        <ul class="space-y-2">
+          <li class="bg-pink-100 p-3 rounded-xl shadow-sm">
+            <strong>HCI @ Stanford</strong>
+          </li>
+          <li class="bg-green-100 p-3 rounded-xl shadow-sm">
+            <strong>PM @ Spotify</strong>
+          </li>
+          <li class="bg-purple-100 p-3 rounded-xl shadow-sm">
+            <strong>Product @ HBO Max</strong>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Projects -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">My Work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div
+            class="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
+          >
+            <h3 class="font-bold">Fantasy F1</h3>
+            <p class="text-sm text-gray-600">Product Stickiness · UI/UX</p>
+          </div>
+          <div
+            class="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
+          >
+            <h3 class="font-bold">Meeting Insights</h3>
+            <p class="text-sm text-gray-600">Product Feature · Pretotyping</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section>
+        <h2 class="text-xl font-semibold mb-2">About Me</h2>
+        <p>
+          I'm a software engineer at Uber. I graduated from Stanford this year
+          with a B.S. in Computer Science. Born and raised in New Jersey, now
+          based in the Bay.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
