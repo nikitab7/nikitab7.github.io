@@ -113,7 +113,7 @@
         <h2 class="text-5xl font-bold mb-10">My Work</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           <!-- Uber Cadence Helm Chart -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="helm">
             <div class="flex flex-col" style="height: 320px;">
               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Uber Cadence" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
@@ -123,7 +123,7 @@
             </div>
           </div>
           <!-- FitCast -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="fitcast">
             <div class="flex flex-col" style="height: 320px;">
               <img src="fitcast.png" alt="FitCast" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
@@ -133,7 +133,7 @@
             </div>
           </div>
           <!-- Racial Covenants Research -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="rc">
             <div class="flex flex-col" style="height: 320px;">
               <img src="RC.png" alt="Racial Covenants Research" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
@@ -143,7 +143,7 @@
             </div>
           </div>
           <!-- Medieval Networks of Memory -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="mnm">
             <div class="flex flex-col" style="height: 320px;">
               <img src="mnm.png" alt="Medieval Networks of Memory" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
@@ -198,5 +198,85 @@
         </div>
       </section>
     </main>
+
+    <!-- Add this just before </body> -->
+    <script>
+      // Modal logic
+      const projects = [
+        {
+          id: 'helm',
+          title: '🛠️ Uber Cadence Helm Chart',
+          img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+          desc: `Created an open-source Helm chart for Uber's Cadence, a workflow orchestration platform that powers 270B+ monthly actions. I designed and implemented scalable infrastructure using Kubernetes, Docker, and Go, making it easy for teams to deploy and manage large-scale distributed workflows. This project improved deployment time by 80%, increased productivity, and reduced operational overhead for engineers across Uber and the open-source community.`,
+          links: [
+            { label: 'View on GitHub', url: 'https://github.com/cadence-workflow/cadence-charts' }
+          ]
+        },
+        {
+          id: 'fitcast',
+          title: '🌦️ FitCast',
+          img: 'fitcast.png',
+          desc: `FitCast is a full-stack mobile app that uses AI to recommend what to wear based on the weather. I built the app with React Native, Supabase, and OpenAI's GPT, integrating user authentication, dynamic onboarding, and a custom navigation system. The app delivers personalized, weather-based outfit suggestions in a seamless, user-friendly experience.`,
+          links: [
+            { label: 'Watch Demo', url: 'https://www.youtube.com/watch?v=OGBovQcj8EU' }
+          ]
+        },
+        {
+          id: 'rc',
+          title: '📜 Racial Covenants Research',
+          img: 'RC.png',
+          desc: `At Stanford HAI, I worked on a research project to detect racially restrictive language in property deeds using large language models. I fine-tuned the Mistral 7B LLM on thousands of annotated documents, improving the model's accuracy by 30%. My work contributed to a peer-reviewed publication and supported impactful research on housing discrimination.`,
+          links: [
+            { label: 'View Project', url: 'https://reglab.github.io/racialcovenants' }
+          ]
+        },
+        {
+          id: 'mnm',
+          title: '🏰 Medieval Networks of Memory',
+          img: 'mnm.png',
+          desc: `For Stanford Text Technologies, I trained a Detectron2 computer vision model to recognize paragraphs in ancient Latin manuscripts with 98% accuracy. This project supported digital humanities research, enabling scholars to analyze and map medieval networks of memory. I also documented the technical process and contributed to interactive research tools and publications.`,
+          links: [
+            { label: 'View Project', url: 'https://medievalnetworks.github.io/mnm/st-johns/' },
+            { label: 'Documentation & Code', url: 'https://small-food-41d.notion.site/Bounding-Boxes-Documentation-22ea4b1b5cc948db8890511a194b5f8e' }
+          ]
+        }
+      ];
+
+      function openModal(id) {
+        const modal = document.getElementById('project-modal');
+        const content = document.getElementById('project-modal-content');
+        const project = projects.find(p => p.id === id);
+        if (!project) return;
+        content.innerHTML = `
+          <button id='close-modal' class='absolute top-4 right-4 text-2xl font-bold text-gray-400 hover:text-black'>&times;</button>
+          <img src='${project.img}' alt='${project.title}' class='w-full h-56 object-cover rounded-md mb-6' />
+          <h2 class='project-title text-lg font-bold mb-2'>${project.title}</h2>
+          <p class='project-desc mb-4 text-sm text-gray-700'>${project.desc}</p>
+          <div class='flex flex-col gap-2'>
+            ${project.links.map(l => `<a href='${l.url}' target='_blank' class='text-blue-600 underline text-xs'>${l.label}</a>`).join('')}
+          </div>
+        `;
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('close-modal').onclick = closeModal;
+        }, 10);
+      }
+      function closeModal() {
+        document.getElementById('project-modal').classList.add('hidden');
+      }
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-project-id]').forEach(card => {
+          card.onclick = () => openModal(card.getAttribute('data-project-id'));
+        });
+        document.getElementById('project-modal').onclick = function(e) {
+          if (e.target === this) closeModal();
+        };
+      });
+    </script>
+
+    <!-- Modal HTML -->
+    <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div id="project-modal-content" class="relative bg-[#fdf7f2] border-2 border-black rounded-md shadow-2xl max-w-lg w-full p-8 flex flex-col items-center"></div>
+    </div>
   </body>
 </html>
