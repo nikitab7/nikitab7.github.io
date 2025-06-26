@@ -66,6 +66,50 @@
       .project-title, .project-desc {
         font-family: 'Libre Baskerville', Georgia, serif;
       }
+
+      .cube-container {
+        perspective: 1200px;
+        width: 16rem;
+        height: 16rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cube {
+        width: 16rem;
+        height: 16rem;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.7s cubic-bezier(.25,.8,.25,1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      }
+      .cube-container:hover .cube {
+        transform: rotateY(90deg);
+      }
+      .cube-face {
+        position: absolute;
+        width: 16rem;
+        height: 16rem;
+        background: #fff;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cube-face img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      .cube-face.front { transform: rotateY(0deg) translateZ(8rem); }
+      .cube-face.right { transform: rotateY(90deg) translateZ(8rem); }
+      .cube-face.back { transform: rotateY(180deg) translateZ(8rem); }
+      .cube-face.left { transform: rotateY(-90deg) translateZ(8rem); }
+      .cube-face.top { transform: rotateX(90deg) translateZ(8rem); }
+      .cube-face.bottom { transform: rotateX(-90deg) translateZ(8rem); }
     </style>
   </head>
   <body
@@ -84,20 +128,15 @@
       <!-- Hero / About -->
       <section
         id="about"
-        class="max-w-3xl mx-auto px-6 min-h-screen flex flex-col justify-center items-start space-y-6 relative"
+        class="max-w-3xl mx-auto px-6 min-h-screen flex flex-col justify-center items-center relative"
       >
-        <div class="flex flex-col md:flex-row items-center md:items-start w-full gap-8">
-          <div class="w-64 h-64 overflow-hidden rounded-2xl shadow-md mb-4 md:mb-0 flex-shrink-0">
-            <img src="cropped2.png" alt="Nikita Bhardwaj" class="w-full h-full object-cover rounded-2xl" />
+        <div class="flex flex-col md:flex-row items-center md:items-center w-full gap-8">
+          <div class="mb-4 md:mb-0 flex-shrink-0">
+            <canvas id="cube-canvas" width="380" height="380" style="width: 380px; height: 380px; background: transparent; cursor: grab;"></canvas>
           </div>
-          <div>
+          <div class="flex flex-col justify-center items-start text-left">
             <h1 class="text-5xl font-bold typewriter">Hi! I'm Nikita.</h1>
-            <p class="text-lg max-w-xl mt-4">
-              I'm currently a software engineer at Uber in San Francisco. I just
-              graduated from Stanford with a B.S. in Computer Science this June! I
-              love building thoughtful products, exploring AI and design, and making
-              cool stuff with friends!
-            </p>
+            <p class="text-2xl mt-4">I code and design things.</p>
           </div>
         </div>
         <!-- Subtle scroll arrow -->
@@ -278,5 +317,106 @@
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div id="project-modal-content" class="relative bg-[#fdf7f2] border-2 border-black rounded-md shadow-2xl max-w-lg w-full p-8 flex flex-col items-center"></div>
     </div>
+
+    <!-- Add Three.js, OrbitControls, and RoundedBoxGeometry CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/geometries/RoundedBoxGeometry.min.js"></script>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Three.js draggable cube
+      const canvas = document.getElementById('cube-canvas');
+      if (!canvas) return;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setClearColor(0x000000, 0); // transparent background
+      renderer.setSize(380, 380);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      // Add a plane for the shadow
+      const planeGeometry = new THREE.PlaneGeometry(4, 4);
+      const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.18 });
+      const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+      plane.rotation.x = -Math.PI / 2;
+      plane.position.y = -1.25;
+      plane.receiveShadow = true;
+      scene.add(plane);
+
+      // Cube
+      // Use RoundedBoxGeometry for soft edges
+      // Assumes RoundedBoxGeometry is loaded from CDN
+      const geometry = new THREE.RoundedBoxGeometry(2.1, 2.1, 2.1, 6, 0.05);
+      const loader = new THREE.TextureLoader();
+      // Load all three images, then create the cube
+      const images = ['cropped2.png', 'b2b2.png', 'frock2.png'];
+      let loaded = 0;
+      const textures = [];
+      images.forEach((img, i) => {
+        loader.load(img, function(tex) {
+          tex.minFilter = THREE.LinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+          // Pre-rotate textures for correct orientation on cube faces
+          // We'll clone the textures for faces that need different rotation
+          textures[i] = tex;
+          loaded++;
+          if (loaded === images.length) makeCube();
+        });
+      });
+
+      function makeCube() {
+        // Assign images to faces: front=cropped2, right=b2b2, back=frock2, left=b2b2, top=frock2, bottom=b2b2
+        // Order: [right, left, top, bottom, front, back]
+        // We'll clone and rotate textures as needed for upright orientation
+        function cloneAndRotate(tex, radians) {
+          const t = tex.clone();
+          t.center.set(0.5, 0.5);
+          t.rotation = radians;
+          t.needsUpdate = true;
+          return t;
+        }
+        const materials = [
+          new THREE.MeshBasicMaterial({ map: cloneAndRotate(textures[1], -Math.PI/2) }), // right: b2b2, rotate -90deg
+          new THREE.MeshBasicMaterial({ map: cloneAndRotate(textures[1], Math.PI/2) }),  // left: b2b2, rotate +90deg
+          new THREE.MeshBasicMaterial({ map: cloneAndRotate(textures[2], Math.PI) }),    // top: frock2, rotate 180deg
+          new THREE.MeshBasicMaterial({ map: cloneAndRotate(textures[1], Math.PI) }),    // bottom: b2b2, rotate 180deg
+          new THREE.MeshBasicMaterial({ map: textures[0] }),                            // front: cropped2, no rotation
+          new THREE.MeshBasicMaterial({ map: textures[2] })                             // back: frock2, no rotation
+        ];
+        const cube = new THREE.Mesh(geometry, materials);
+        cube.castShadow = true;
+        cube.position.y = 0;
+        // Start the cube with the front face (cropped2.png) facing the camera
+        cube.rotation.set(0, 0, 0);
+        scene.add(cube);
+
+        camera.position.set(0, 0, 3.5);
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enablePan = false;
+        controls.enableZoom = false;
+
+        canvas.addEventListener('pointerover', () => { canvas.style.cursor = 'grab'; });
+        canvas.addEventListener('pointerdown', () => { canvas.style.cursor = 'grabbing'; });
+        canvas.addEventListener('pointerup', () => { canvas.style.cursor = 'grab'; });
+        canvas.addEventListener('pointerleave', () => { canvas.style.cursor = 'grab'; });
+
+        let floatStart = Date.now();
+        function animate() {
+          requestAnimationFrame(animate);
+          const t = (Date.now() - floatStart) / 1000;
+          // Floating animation
+          cube.position.y = 0.2 * Math.sin(t * 2) + 0;
+          // Natural rotation
+          cube.rotation.y += 0.01;
+          cube.rotation.x += 0.005;
+          renderer.render(scene, camera);
+        }
+        animate();
+      }
+    });
+    </script>
   </body>
 </html>
