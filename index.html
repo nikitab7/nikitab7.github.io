@@ -6,6 +6,7 @@
     <title>Nikita Bhardwaj</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Londrina+Outline&family=Winky+Rough&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
       @font-face {
         font-family: 'vtks morezineo';
@@ -338,9 +339,9 @@
       }
       .hero-title {
         font-family: 'froggyprincess-regular', 'vtks morezineo', 'Vtks Morezineo', 'Morninggrown', 'Londrina Outline', cursive, sans-serif;
-        font-size: 9rem;
+        font-size: 12rem;
         letter-spacing: 0.18em;
-        transform: scaleY(1.3) scaleX(0.7);
+        transform: scaleY(0.9) scaleX(0.7);
         display: inline-block;
         white-space: nowrap;
         line-height: 1;
@@ -383,6 +384,43 @@
       .floating-image {
         animation: gentle-float 6s ease-in-out infinite;
       }
+      .about-lora {
+        font-family: 'Lora', serif !important;
+        font-weight: 400 !important;
+      }
+      
+      /* Override hero-title display for ABOUT heading */
+      #about-title-text {
+  display: block !important;
+  text-align: left !important;
+  width: auto !important;
+  margin-left: -3rem !important;
+  position: static !important;
+  transform: scale(0.9) !important;
+  color: #333 !important;
+}
+
+#about-title-text .letter {
+  color: #333 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+  text-shadow: none !important;
+  outline: none !important;
+}
+
+#about-title-text .letter:hover {
+  color: #333 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+  text-shadow: none !important;
+  outline: none !important;
+}
     </style>
   </head>
   <body
@@ -404,16 +442,16 @@
       >
         <!-- Star specks -->
         <div style="overflow-x: auto; width: 100%;">
-          <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-16 w-full z-10 relative">
-            <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
-              <img src="hi2.png" alt="Hi" class="w-72 h-72 md:w-80 md:h-80 object-contain" style="order: 3; margin-bottom: 1rem; margin-top: 2rem;">
-              <div class="flex flex-col items-center md:items-center space-y-8" style="order: 1;">
-                <h1 class="text-[4.5rem] md:text-[7rem] font-bold hero-title" style="color: #333; padding-top: 2rem;">
+          <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-6 w-full z-10 relative">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-0">
+              <img src="hi2.png" alt="Hi" class="w-84 h-84 md:w-[25rem] md:h-[25rem] object-contain" style="order: 3; margin-bottom: 0.25rem; margin-top: 0.5rem; margin-left: -2rem;">
+              <div class="flex flex-col items-center md:items-center space-y-2" style="order: 1;">
+                <h1 class="text-[6rem] md:text-[8rem] font-bold hero-title" style="color: #333; padding-top: 0.5rem;">
                   <span id="hero-title-text"></span>
-                  <span style="display: block; height: 0.5rem;"></span>
+                  <span style="display: block; height: 0.1rem;"></span>
                   <span id="hero-title-text-2"></span>
                 </h1>
-                <p class="hero-subtitle" style="color: #333; margin-top: 4rem;"><span id="typewriter-text"></span></p>
+                <p class="hero-subtitle" style="color: #333; margin-top: 1.5rem;"><span id="typewriter-text"></span></p>
               </div>
             </div>
           </div>
@@ -434,12 +472,83 @@
       </section>
 
       <!-- About -->
-      <section id="about" class="w-full min-h-screen py-16 max-w-4xl mx-auto">
-        <h2 class="text-[4.5rem] md:text-[7rem] font-bold mb-10 hero-title" style="color: #333;">ABOUT</h2>
-        <div class="bg-[#fdf7f2] border-2 border-black rounded-md p-8 w-full">
-          <p class="text-lg text-gray-700 leading-relaxed">
-            <!-- Content will be filled in by user -->
-          </p>
+      <section id="about" class="w-full min-h-screen py-16 max-w-4xl mx-auto about-lora">
+        <!-- ABOUT heading at the top -->
+        <h2 class="text-[4.5rem] md:text-[7rem] font-bold hero-title text-left mb-8" style="color: #333;" id="about-title-text">ABOUT</h2>
+        
+        <!-- Image and text side by side -->
+        <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+          <!-- Left: Image -->
+          <div class="flex-shrink-0">
+            <img src="nikita.jpeg" alt="Nikita Bhardwaj" class="rounded-xl shadow-lg object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-white" style="background:#eee;" />
+          </div>
+          
+          <!-- Right: Vertical bar + text -->
+          <div class="flex-1 flex items-start">
+            <div class="h-full w-3 bg-black mr-6 hidden md:block" style="min-height: 240px;"></div>
+            <div>
+              <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                I just graduated from Stanford with a B.S. in Computer Science this June! I'm about to start full-time as a software engineer at Uber in San Francisco this July. I love building thoughtful products, exploring AI and design, and making cool stuff with friends!
+              </p>
+              <div class="mt-4 flex flex-col gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">👋</span>
+                  <span class="text-gray-800">You can contact me at <a href="mailto:nikitab7@stanford.edu" class="underline">nikitab7@stanford.edu</a> or on <a href="https://www.linkedin.com/in/nikita-bhardwaj-3a38b920b/" target="_blank" class="text-blue-700 underline">LinkedIn</a>.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section class="max-w-4xl mx-auto mt-12 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Currently -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Currently...</h3>
+            <div class="bg-blue-50 border border-blue-100 rounded-lg p-5 flex gap-4 items-start mb-4 shadow-sm">
+              <img src="b2b.png" alt="Uber logo" class="h-10 w-10 object-contain rounded" />
+              <div>
+                <div class="font-bold text-lg mb-1"><span class="underline">Software Engineer @ Uber</span></div>
+                <div class="text-gray-700 leading-snug">Jul 2024 - Present</div>
+              </div>
+            </div>
+          </div>
+          <!-- Previously -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Previously...</h3>
+            <div class="flex flex-col gap-3">
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                <img src="b2b.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
+                <div>
+                  <div class="font-bold underline">Software Engineer Intern @ Uber</div>
+                  <div class="text-gray-700 text-sm">Jun 2024 - Sep 2024 · 4 mos</div>
+                </div>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                <img src="RC.png" alt="Stanford HAI logo" class="h-8 w-8 object-contain rounded" />
+                <div>
+                  <div class="font-bold underline">Research Assistant @ Stanford HAI</div>
+                  <div class="text-gray-700 text-sm">Dec 2023 - Apr 2024 · 5 mos</div>
+                </div>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                <img src="fitcast.png" alt="ProofPilot logo" class="h-8 w-8 object-contain rounded" />
+                <div>
+                  <div class="font-bold underline">Machine Learning Intern @ ProofPilot</div>
+                  <div class="text-gray-700 text-sm">Jun 2023 - Sep 2023 · 4 mos</div>
+                </div>
+              </div>
+              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                <img src="mnm.png" alt="Center for Spatial and Textual Analysis logo" class="h-8 w-8 object-contain rounded" />
+                <div>
+                  <div class="font-bold underline">Research Assistant @ Center for Spatial and Textual Analysis</div>
+                  <div class="text-gray-700 text-sm">Dec 2021 - Jun 2022 · 7 mos</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -605,6 +714,7 @@
           }
         }, 100);
         spanifyText('hero-title-text-2', "I'M NIKITA");
+        spanifyText('about-title-text', "ABOUT");
         // Typewriter effect for subtitle with cycling phrases, static part on its own line, slower, with flashing cursor
         const staticPart = "I'm a Stanford CS grad, currently...";
         const phrases = [
@@ -764,3 +874,4 @@
     </div>
   </body>
 </html>
+
