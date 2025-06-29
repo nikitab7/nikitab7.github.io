@@ -391,36 +391,69 @@
       
       /* Override hero-title display for ABOUT heading */
       #about-title-text {
-  display: block !important;
-  text-align: left !important;
-  width: auto !important;
-  margin-left: -3rem !important;
-  position: static !important;
-  transform: scale(0.9) !important;
-  color: #333 !important;
-}
+        display: block !important;
+        text-align: left !important;
+        width: auto !important;
+        margin-left: -3rem !important;
+        position: static !important;
+        transform: scale(0.9) !important;
+        color: #333 !important;
+      }
 
-#about-title-text .letter {
-  color: #333 !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-stroke: 0 !important;
-  text-stroke: 0 !important;
-  text-shadow: none !important;
-  outline: none !important;
-}
+      #about-title-text .letter {
+        color: #333 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-stroke: 0 !important;
+        text-stroke: 0 !important;
+        text-shadow: none !important;
+        outline: none !important;
+      }
 
-#about-title-text .letter:hover {
-  color: #333 !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-stroke: 0 !important;
-  text-stroke: 0 !important;
-  text-shadow: none !important;
-  outline: none !important;
-}
+      #about-title-text .letter:hover {
+        color: #333 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-stroke: 0 !important;
+        text-stroke: 0 !important;
+        text-shadow: none !important;
+        outline: none !important;
+      }
+
+      /* Override hero-title display for MY WORK heading */
+      #my-work-title-text {
+        display: block !important;
+        text-align: left !important;
+        width: auto !important;
+        margin-left: -3.4rem !important;
+        position: static !important;
+        transform: scale(0.9) !important;
+        color: #333 !important;
+      }
+
+      #my-work-title-text .letter {
+        color: #333 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-stroke: 0 !important;
+        text-stroke: 0 !important;
+        text-shadow: none !important;
+        outline: none !important;
+      }
+
+      #my-work-title-text .letter:hover {
+        color: #333 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-stroke: 0 !important;
+        text-stroke: 0 !important;
+        text-shadow: none !important;
+        outline: none !important;
+      }
     </style>
   </head>
   <body
@@ -480,7 +513,7 @@
         <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12">
           <!-- Left: Image -->
           <div class="flex-shrink-0">
-            <img src="nikita.jpeg" alt="Nikita Bhardwaj" class="rounded-xl shadow-lg object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-white" style="background:#eee;" />
+            <img src="cropped2.png" alt="Nikita Bhardwaj" class="rounded-xl shadow-lg object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-white" style="background:#eee;" />
           </div>
           
           <!-- Right: Vertical bar + text -->
@@ -499,52 +532,41 @@
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Experience Section -->
-      <section class="max-w-4xl mx-auto mt-12 mb-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Currently -->
-          <div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Currently...</h3>
-            <div class="bg-blue-50 border border-blue-100 rounded-lg p-5 flex gap-4 items-start mb-4 shadow-sm">
-              <img src="b2b.png" alt="Uber logo" class="h-10 w-10 object-contain rounded" />
-              <div>
-                <div class="font-bold text-lg mb-1"><span class="underline">Software Engineer @ Uber</span></div>
-                <div class="text-gray-700 leading-snug">Jul 2024 - Present</div>
+        <!-- Experience Section -->
+        <div class="mt-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Currently -->
+            <div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">Currently...</h3>
+              <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
+                <div>
+                  <div class="about-lora">Dev. Platform @ Uber</div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- Previously -->
-          <div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Previously...</h3>
-            <div class="flex flex-col gap-3">
-              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                <img src="b2b.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
-                <div>
-                  <div class="font-bold underline">Software Engineer Intern @ Uber</div>
-                  <div class="text-gray-700 text-sm">Jun 2024 - Sep 2024 · 4 mos</div>
+            <!-- Previously -->
+            <div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">Previously...</h3>
+              <div class="flex flex-col gap-3">
+                <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                  <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
+                  <div>
+                    <div class="about-lora">Infra Engineering @ Uber</div>
+                  </div>
                 </div>
-              </div>
-              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                <img src="RC.png" alt="Stanford HAI logo" class="h-8 w-8 object-contain rounded" />
-                <div>
-                  <div class="font-bold underline">Research Assistant @ Stanford HAI</div>
-                  <div class="text-gray-700 text-sm">Dec 2023 - Apr 2024 · 5 mos</div>
+                <div class="bg-red-50 border border-red-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                  <img src="stanford.png" alt="Stanford HAI logo" class="h-8 w-8 object-contain rounded" />
+                  <div>
+                    <div class="about-lora">HAI @ Stanford</div>
+                  </div>
                 </div>
-              </div>
-              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                <img src="fitcast.png" alt="ProofPilot logo" class="h-8 w-8 object-contain rounded" />
-                <div>
-                  <div class="font-bold underline">Machine Learning Intern @ ProofPilot</div>
-                  <div class="text-gray-700 text-sm">Jun 2023 - Sep 2023 · 4 mos</div>
-                </div>
-              </div>
-              <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                <img src="mnm.png" alt="Center for Spatial and Textual Analysis logo" class="h-8 w-8 object-contain rounded" />
-                <div>
-                  <div class="font-bold underline">Research Assistant @ Center for Spatial and Textual Analysis</div>
-                  <div class="text-gray-700 text-sm">Dec 2021 - Jun 2022 · 7 mos</div>
+                <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
+                  <img src="PP-removebg-preview.png" alt="ProofPilot logo" class="h-8 w-8 object-contain rounded" />
+                  <div>
+                    <div class="about-lora">Machine Learning @ ProofPilot</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -554,7 +576,7 @@
 
       <!-- Projects -->
       <section id="projects" class="py-16 max-w-4xl mx-auto">
-        <h2 class="text-5xl font-bold mb-10 hero-title" style="color: #111;">My Work</h2>
+        <h2 class="text-[4.5rem] md:text-[7rem] font-bold hero-title text-left mb-8" style="color: #333; margin-left: -4rem;" id="my-work-title-text">MY WORK</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           <!-- Uber Cadence Helm Chart -->
           <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="helm">
@@ -715,6 +737,7 @@
         }, 100);
         spanifyText('hero-title-text-2', "I'M NIKITA");
         spanifyText('about-title-text', "ABOUT");
+        spanifyText('my-work-title-text', "MY WORK");
         // Typewriter effect for subtitle with cycling phrases, static part on its own line, slower, with flashing cursor
         const staticPart = "I'm a Stanford CS grad, currently...";
         const phrases = [
