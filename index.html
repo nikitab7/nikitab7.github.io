@@ -148,7 +148,7 @@
       }
       
       .project-title, .project-desc {
-        font-family: 'Libre Baskerville', Georgia, serif;
+        font-family: 'Lora', serif;
       }
       
       .nikita-stripes {
@@ -348,12 +348,10 @@
       }
       nav {
         font-family: 'Morninggrown', 'Londrina Outline', cursive;
-        transform: scaleY(1.4) scaleX(0.85);
         display: inline-block;
       }
       nav a {
         font-family: inherit;
-        text-transform: uppercase;
       }
       /* Shadow/glow effect for side image */
       .glow-image {
@@ -460,12 +458,23 @@
     class="text-gray-900 font-sans leading-relaxed scroll-smooth"
   >
     <!-- Navigation -->
-    <nav class="fixed top-0 right-0 p-6 z-50">
+    <nav class="fixed top-0 right-0 p-6 z-50 font-['Lora',serif]" style="right: 2rem;">
       <div class="flex space-x-8">
         <a href="#about" class="text-gray-700 hover:text-black transition-colors">About</a>
         <a href="#projects" class="text-gray-700 hover:text-black transition-colors">Projects</a>
+        <a href="https://www.linkedin.com/in/nikita-bhardwaj-3a38b920b/" target="_blank" class="text-gray-700 hover:text-black transition-colors">
+          <img src="LINKNEDIN.png" alt="LinkedIn" class="w-5 h-5 object-contain mt-0.5">
+        </a>
+        <a href="https://github.com/nikitab7" target="_blank" class="text-gray-700 hover:text-black transition-colors">
+          <img src="gitty.png" alt="GitHub" class="w-5 h-5 object-contain">
+        </a>
       </div>
     </nav>
+
+    <!-- Home link -->
+    <div class="fixed top-0 left-0 p-6 z-50 font-['Lora',serif]">
+      <a href="#home" class="text-gray-700 hover:text-black transition-colors font-bold">NB</a>
+    </div>
 
     <main class="max-w-6xl mx-auto px-6">
       <!-- Hero / About -->
@@ -507,21 +516,56 @@
       <!-- About -->
       <section id="about" class="w-full min-h-screen py-16 max-w-4xl mx-auto about-lora">
         <!-- ABOUT heading at the top -->
-        <h2 class="text-[4.5rem] md:text-[7rem] font-bold hero-title text-left mb-8" style="color: #333;" id="about-title-text">ABOUT</h2>
+        <h2 class="text-[3.5rem] md:text-[5.5rem] font-bold hero-title text-left mb-8" style="color: #333;" id="about-title-text">ABOUT ME</h2>
         
         <!-- Image and text side by side -->
         <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12">
-          <!-- Left: Image -->
+          <!-- Left: Image Carousel -->
           <div class="flex-shrink-0">
-            <img src="cropped2.png" alt="Nikita Bhardwaj" class="rounded-xl shadow-lg object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-white" style="background:#eee;" />
+            <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-lg border-4 border-white" style="background:#eee;">
+              <!-- Carousel container -->
+              <div id="image-carousel" class="w-full h-full relative">
+                <!-- Images -->
+                <img src="cropped2.png" alt="Nikita Bhardwaj" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" data-caption="Hi, I'm Nikita!" />
+                <img src="b2b.png" alt="Bay to Breakers" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-caption="I recently ran bay 2 breakers! (a 12k!)" />
+                <img src="SF.jpg" alt="San Francisco" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-caption="San Francisco" />
+              </div>
+              
+              <!-- Caption overlay -->
+              <div id="image-caption" class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-sm p-2 text-center transform translate-y-full transition-transform duration-300">
+                Hi, I'm Nikita!
+              </div>
+              
+              <!-- Navigation arrows -->
+              <button id="prev-btn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <button id="next-btn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+              
+              <!-- Dots indicator -->
+              <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                <button class="carousel-dot w-2 h-2 rounded-full bg-white bg-opacity-70 transition-all" data-index="0"></button>
+                <button class="carousel-dot w-2 h-2 rounded-full bg-white bg-opacity-30 transition-all" data-index="1"></button>
+                <button class="carousel-dot w-2 h-2 rounded-full bg-white bg-opacity-30 transition-all" data-index="2"></button>
+              </div>
+            </div>
           </div>
           
           <!-- Right: Vertical bar + text -->
           <div class="flex-1 flex items-start">
-            <div class="h-full w-3 bg-black mr-6 hidden md:block" style="min-height: 240px;"></div>
+            <div class="h-full w-3 bg-black mr-6 hidden md:block"></div>
             <div>
               <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                I just graduated from Stanford with a B.S. in Computer Science this June! I'm about to start full-time as a software engineer at Uber in San Francisco this July. I love building thoughtful products, exploring AI and design, and making cool stuff with friends!
+                I just graduated from Stanford with a B.S. in Computer Science, concentrating in AI. This July, I'm starting full-time as a software engineer at Uber in San Francisco. I was born and raised in New Jersey and love building thoughtful products at the intersection of AI and design.
+              </p>
+              <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                I'm especially passionate about leveraging AI for social impact, and much of my past work has explored how technology can address real-world inequalities. In my free time, you'll find me playing volleyball, going to the gym, running, or learning my favorite songs on the piano.
               </p>
               <div class="mt-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
@@ -535,39 +579,47 @@
 
         <!-- Experience Section -->
         <div class="mt-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-8">
             <!-- Currently -->
             <div>
               <h3 class="text-2xl font-semibold mb-4 text-gray-800">Currently...</h3>
-              <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
-                <div>
-                  <div class="about-lora">Dev. Platform @ Uber</div>
+              <a href="https://www.uber.com/en-US/blog/engineering/" target="_blank" class="block">
+                <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow underline">
+                  <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
+                  <div>
+                    <div class="about-lora">Dev. Platform @ Uber</div>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
             <!-- Previously -->
             <div>
               <h3 class="text-2xl font-semibold mb-4 text-gray-800">Previously...</h3>
               <div class="flex flex-col gap-3">
-                <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                  <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
-                  <div>
-                    <div class="about-lora">Infra Engineering @ Uber</div>
+                <a href="https://www.uber.com/en-US/blog/engineering/" target="_blank" class="block">
+                  <div class="bg-purple-50 border border-purple-100 rounded-lg p-4 flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow underline">
+                    <img src="uber.png" alt="Uber logo" class="h-8 w-8 object-contain rounded" />
+                    <div>
+                      <div class="about-lora">Infra Engineering @ Uber</div>
+                    </div>
                   </div>
-                </div>
-                <div class="bg-red-50 border border-red-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                  <img src="stanford.png" alt="Stanford HAI logo" class="h-8 w-8 object-contain rounded" />
-                  <div>
-                    <div class="about-lora">HAI @ Stanford</div>
+                </a>
+                <a href="https://hai.stanford.edu/" target="_blank" class="block">
+                  <div class="bg-red-50 border border-red-100 rounded-lg p-4 flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow underline">
+                    <img src="stanford.png" alt="Stanford HAI logo" class="h-8 w-8 object-contain rounded" />
+                    <div>
+                      <div class="about-lora">HAI @ Stanford</div>
+                    </div>
                   </div>
-                </div>
-                <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 flex gap-3 items-center shadow-sm">
-                  <img src="PP-removebg-preview.png" alt="ProofPilot logo" class="h-8 w-8 object-contain rounded" />
-                  <div>
-                    <div class="about-lora">Machine Learning @ ProofPilot</div>
+                </a>
+                <a href="https://www.proofpilot.com/" target="_blank" class="block">
+                  <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 flex gap-3 items-center shadow-sm hover:shadow-md transition-shadow underline">
+                    <img src="PP-removebg-preview.png" alt="ProofPilot logo" class="h-8 w-8 object-contain rounded" />
+                    <div>
+                      <div class="about-lora">Machine Learning @ ProofPilot</div>
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -575,46 +627,71 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="py-16 max-w-4xl mx-auto">
-        <h2 class="text-[4.5rem] md:text-[7rem] font-bold hero-title text-left mb-8" style="color: #333; margin-left: -4rem;" id="my-work-title-text">MY WORK</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <!-- Uber Cadence Helm Chart -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="helm">
-            <div class="flex flex-col" style="height: 320px;">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Uber Cadence" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
-              <div class="flex-1 flex flex-col justify-center px-10 py-3">
-                <h3 class="project-title text-base font-bold mb-1">🛠️ Uber Cadence Helm Chart</h3>
-                <p class="project-desc text-xs text-gray-700">Open-source Helm chart for Uber's workflow orchestration platform, built for scale and reliability.</p>
-              </div>
-            </div>
-          </div>
-          <!-- FitCast -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="fitcast">
-            <div class="flex flex-col" style="height: 320px;">
-              <img src="fitcast.png" alt="FitCast" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
-              <div class="flex-1 flex flex-col justify-center px-10 py-3">
-                <h3 class="project-title text-base font-bold mb-1">🌦️ FitCast</h3>
-                <p class="project-desc text-xs text-gray-700">AI-powered mobile app that recommends outfits based on the weather, using GPT and Supabase.</p>
-              </div>
-            </div>
-          </div>
+      <section id="projects" class="py-16 pb-32 max-w-4xl mx-auto">
+        <h2 class="text-[3.5rem] md:text-[5.5rem] font-bold hero-title text-left mb-12" style="color: #333; margin-left: -4rem;" id="my-work-title-text">MY WORK</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-8">
           <!-- Racial Covenants Research -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="rc">
-            <div class="flex flex-col" style="height: 320px;">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-sm overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] w-full max-w-sm mx-auto relative group">
+            <div class="flex flex-col" style="height: 280px;">
               <img src="RC.png" alt="Racial Covenants Research" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
                 <h3 class="project-title text-base font-bold mb-1">📜 Racial Covenants Research</h3>
                 <p class="project-desc text-xs text-gray-700">LLM-powered tool for detecting racially restrictive language in property deeds, supporting Stanford HAI research.</p>
               </div>
             </div>
+            <!-- Hover overlay with links -->
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div class="flex flex-col gap-2">
+                <a href="https://reglab.github.io/racialcovenants" target="_blank" class="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">View Project</a>
+              </div>
+            </div>
+          </div>
+          <!-- Uber Cadence Helm Chart -->
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-sm overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] w-full max-w-sm mx-auto relative group">
+            <div class="flex flex-col" style="height: 280px;">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Uber Cadence" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
+              <div class="flex-1 flex flex-col justify-center px-10 py-3">
+                <h3 class="project-title text-base font-bold mb-1">🛠️ Uber Cadence Helm Chart</h3>
+                <p class="project-desc text-xs text-gray-700">Open-source Helm chart for Uber's workflow orchestration platform, built for scale and reliability.</p>
+              </div>
+            </div>
+            <!-- Hover overlay with links -->
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div class="flex flex-col gap-2">
+                <a href="https://github.com/cadence-workflow/cadence-charts" target="_blank" class="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+          <!-- FitCast -->
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-sm overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] w-full max-w-sm mx-auto relative group">
+            <div class="flex flex-col" style="height: 280px;">
+              <img src="fitcast.png" alt="FitCast" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
+              <div class="flex-1 flex flex-col justify-center px-10 py-3">
+                <h3 class="project-title text-base font-bold mb-1">🌦️ FitCast</h3>
+                <p class="project-desc text-xs text-gray-700">AI-powered mobile app that recommends outfits based on the weather, using GPT and Supabase.</p>
+              </div>
+            </div>
+            <!-- Hover overlay with links -->
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div class="flex flex-col gap-2">
+                <a href="https://www.youtube.com/watch?v=OGBovQcj8EU" target="_blank" class="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">Watch Demo</a>
+              </div>
+            </div>
           </div>
           <!-- Medieval Networks of Memory -->
-          <div class="bg-[#fdf7f2] border-2 border-black rounded-md overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] cursor-pointer w-full" data-project-id="mnm">
-            <div class="flex flex-col" style="height: 320px;">
+          <div class="bg-[#fdf7f2] border-2 border-black rounded-sm overflow-hidden transition-transform duration-200 hover:shadow-2xl hover:scale-[1.025] w-full max-w-sm mx-auto relative group">
+            <div class="flex flex-col" style="height: 280px;">
               <img src="mnm.png" alt="Medieval Networks of Memory" class="w-full object-cover flex-shrink-0" style="height: 65%; min-height: 120px; background: #111;" />
               <div class="flex-1 flex flex-col justify-center px-10 py-3">
                 <h3 class="project-title text-base font-bold mb-1">🏰 Medieval Networks of Memory</h3>
                 <p class="project-desc text-xs text-gray-700">Detectron2 model for reading ancient Latin manuscripts, built for Stanford digital humanities research.</p>
+              </div>
+            </div>
+            <!-- Hover overlay with links -->
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div class="flex flex-col gap-2">
+                <a href="https://medievalnetworks.github.io/mnm/st-johns/" target="_blank" class="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">View Project</a>
+                <a href="https://small-food-41d.notion.site/Bounding-Boxes-Documentation-22ea4b1b5cc948db8890511a194b5f8e" target="_blank" class="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">Documentation & Code</a>
               </div>
             </div>
           </div>
@@ -624,76 +701,7 @@
 
     <!-- Add this just before </body> -->
     <script>
-      // Modal logic
-      const projects = [
-        {
-          id: 'helm',
-          title: '🛠️ Uber Cadence Helm Chart',
-          img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
-          desc: `Created an open-source Helm chart for Uber's Cadence, a workflow orchestration platform that powers 270B+ monthly actions. I designed and implemented scalable infrastructure using Kubernetes, Docker, and Go, making it easy for teams to deploy and manage large-scale distributed workflows. This project improved deployment time by 80%, increased productivity, and reduced operational overhead for engineers across Uber and the open-source community.`,
-          links: [
-            { label: 'View on GitHub', url: 'https://github.com/cadence-workflow/cadence-charts' }
-          ]
-        },
-        {
-          id: 'fitcast',
-          title: '🌦️ FitCast',
-          img: 'fitcast.png',
-          desc: `FitCast is a full-stack mobile app that uses AI to recommend what to wear based on the weather. I built the app with React Native, Supabase, and OpenAI's GPT, integrating user authentication, dynamic onboarding, and a custom navigation system. The app delivers personalized, weather-based outfit suggestions in a seamless, user-friendly experience.`,
-          links: [
-            { label: 'Watch Demo', url: 'https://www.youtube.com/watch?v=OGBovQcj8EU' }
-          ]
-        },
-        {
-          id: 'rc',
-          title: '📜 Racial Covenants Research',
-          img: 'RC.png',
-          desc: `At Stanford HAI, I worked on a research project to detect racially restrictive language in property deeds using large language models. I fine-tuned the Mistral 7B LLM on thousands of annotated documents, improving the model's accuracy by 30%. My work contributed to a peer-reviewed publication and supported impactful research on housing discrimination.`,
-          links: [
-            { label: 'View Project', url: 'https://reglab.github.io/racialcovenants' }
-          ]
-        },
-        {
-          id: 'mnm',
-          title: '🏰 Medieval Networks of Memory',
-          img: 'mnm.png',
-          desc: `For Stanford Text Technologies, I trained a Detectron2 computer vision model to recognize paragraphs in ancient Latin manuscripts with 98% accuracy. This project supported digital humanities research, enabling scholars to analyze and map medieval networks of memory. I also documented the technical process and contributed to interactive research tools and publications.`,
-          links: [
-            { label: 'View Project', url: 'https://medievalnetworks.github.io/mnm/st-johns/' },
-            { label: 'Documentation & Code', url: 'https://small-food-41d.notion.site/Bounding-Boxes-Documentation-22ea4b1b5cc948db8890511a194b5f8e' }
-          ]
-        }
-      ];
-
-      function openModal(id) {
-        const modal = document.getElementById('project-modal');
-        const content = document.getElementById('project-modal-content');
-        const project = projects.find(p => p.id === id);
-        if (!project) return;
-        content.innerHTML = `
-          <button id='close-modal' class='absolute top-4 right-4 text-2xl font-bold text-gray-400 hover:text-black'>&times;</button>
-          <img src='${project.img}' alt='${project.title}' class='w-full h-56 object-cover rounded-md mb-6' />
-          <h2 class='project-title text-lg font-bold mb-2'>${project.title}</h2>
-          <p class='project-desc mb-4 text-sm text-gray-700'>${project.desc}</p>
-          <div class='flex flex-col gap-2'>
-            ${project.links.map(l => `<a href='${l.url}' target='_blank' class='text-blue-600 underline text-xs'>${l.label}</a>`).join('')}
-          </div>
-        `;
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-          document.getElementById('close-modal').onclick = closeModal;
-        }, 10);
-      }
-      function closeModal() {
-        document.getElementById('project-modal').classList.add('hidden');
-      }
       window.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('[data-project-id]').forEach(card => {
-          card.onclick = () => openModal(card.getAttribute('data-project-id'));
-        });
-        document.getElementById('project-modal').onclick = function(e) {
-          if (e.target === this) closeModal();
-        };
         spanifyText('hero-title-text', "HI");
         // Add exclamation mark with custom font after the text is rendered
         setTimeout(() => {
@@ -736,7 +744,7 @@
           }
         }, 100);
         spanifyText('hero-title-text-2', "I'M NIKITA");
-        spanifyText('about-title-text', "ABOUT");
+        spanifyText('about-title-text', "ABOUT ME");
         spanifyText('my-work-title-text', "MY WORK");
         // Typewriter effect for subtitle with cycling phrases, static part on its own line, slower, with flashing cursor
         const staticPart = "I'm a Stanford CS grad, currently...";
@@ -829,6 +837,106 @@
           }, randomInterval);
         }
         startRandomAnimations();
+
+        // Image carousel functionality
+        function initCarousel() {
+          console.log('Initializing carousel...');
+          const images = document.querySelectorAll('.carousel-image');
+          const dots = document.querySelectorAll('.carousel-dot');
+          const prevBtn = document.getElementById('prev-btn');
+          const nextBtn = document.getElementById('next-btn');
+          console.log('Found', images.length, 'carousel images');
+          let currentIndex = 0;
+          let autoAdvanceInterval;
+
+          function showImage(index) {
+            // Hide all images
+            images.forEach(img => img.style.opacity = '0');
+            // Show current image
+            images[index].style.opacity = '1';
+            
+            // Update dots
+            dots.forEach((dot, i) => {
+              dot.style.backgroundColor = i === index ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.3)';
+            });
+            
+            // Update caption
+            const caption = document.getElementById('image-caption');
+            if (caption && images[index].dataset.caption) {
+              caption.textContent = images[index].dataset.caption;
+            }
+            
+            currentIndex = index;
+          }
+
+          function nextImage() {
+            const nextIndex = (currentIndex + 1) % images.length;
+            showImage(nextIndex);
+          }
+
+          function prevImage() {
+            const prevIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(prevIndex);
+          }
+
+          function startAutoAdvance() {
+            console.log('Starting auto-advance for carousel');
+            autoAdvanceInterval = setInterval(() => {
+              console.log('Auto-advancing carousel to next image');
+              nextImage();
+            }, 3000); // Change every 3 seconds
+          }
+
+          function stopAutoAdvance() {
+            clearInterval(autoAdvanceInterval);
+          }
+
+          // Event listeners
+          if (prevBtn) prevBtn.addEventListener('click', () => {
+            prevImage();
+            stopAutoAdvance();
+            startAutoAdvance();
+          });
+          
+          if (nextBtn) nextBtn.addEventListener('click', () => {
+            nextImage();
+            stopAutoAdvance();
+            startAutoAdvance();
+          });
+
+          // Dot navigation
+          dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+              showImage(index);
+              stopAutoAdvance();
+              startAutoAdvance();
+            });
+          });
+
+          // Pause auto-advance on hover
+          const carousel = document.getElementById('image-carousel');
+          if (carousel) {
+            carousel.addEventListener('mouseenter', stopAutoAdvance);
+            carousel.addEventListener('mouseleave', startAutoAdvance);
+          }
+
+          // Show/hide caption on hover
+          const caption = document.getElementById('image-caption');
+          if (carousel && caption) {
+            carousel.addEventListener('mouseenter', () => {
+              caption.style.transform = 'translateY(0)';
+            });
+            carousel.addEventListener('mouseleave', () => {
+              caption.style.transform = 'translateY(100%)';
+            });
+          }
+
+          // Start auto-advance
+          startAutoAdvance();
+        }
+
+        // Initialize carousel when DOM is loaded
+        initCarousel();
       });
 
       // Per-letter span for hero title only, with random gradient direction on hover
@@ -890,11 +998,6 @@
         }
       }
     </script>
-
-    <!-- Modal HTML -->
-    <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div id="project-modal-content" class="relative bg-[#fdf7f2] border-2 border-black rounded-md shadow-2xl max-w-lg w-full p-8 flex flex-col items-center"></div>
-    </div>
   </body>
 </html>
 
